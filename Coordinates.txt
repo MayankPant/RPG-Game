@@ -1,0 +1,3 @@
+Coordinates for the extreme edges of map.
+x = -4310
+y = -2232
