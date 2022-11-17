@@ -1,4 +1,4 @@
-import flash.events.KeyboardEvent; // imports keyboard events
+﻿import flash.events.KeyboardEvent; // imports keyboard events
 import flash.ui.Keyboard; // allows us to easily refer to the keys of keyboard with ease
 import flash.display.MovieClip;
 import flash.events.Event;
