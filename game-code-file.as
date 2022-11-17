@@ -5,15 +5,25 @@ import flash.events.Event;
 import flash.display.Stage;
 
 
-linkMc.gotoAndStop("StandFrontFrame"); //goes to the given frame in the tomeline of the instance and stops there
+linkMc.gotoAndStop("StandFrontFrame"); //goes to the given frame in the timeline of the instance and stops there
 
-
+// variables for link
 var rightPressed:Boolean = false; // controls the right arrow press key
 var leftPressed:Boolean = false; // controls the right arrow press key
 var upPressed:Boolean = false; // controls the right arrow press key
 var downPressed:Boolean = false; // controls the right arrow press key
-
 var linkSpeed:Number = 6;
+// variables for kope
+
+var kopeTimer:Number = 0;
+var KopeDur:Number = Math.random() * 25; // randomly selects the duration for which kope will move in a direction
+var kopeFacing:Number = Math.floor(Math.random() * 4); // randomly selects a direction to walk in
+var kopeSpeed:Number = 3;
+
+
+
+
+
 
 // creating an event listener for pressing keys
 stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler); // event for pressing a key
@@ -60,9 +70,12 @@ function keyUpHandler(keyEvent:KeyboardEvent):void{
 	
 }
 
-// function to control the game loop.
+// ------------------------------------------------------------------------
+// -------------------function to control the game loop.-------------------
+// ------------------------------------------------------------------------
 function gameLoop(loopEvent:Event):void{
 	
+	// links movement controls
 	if(rightPressed){
 		
 		if(linkMc.x < 800)
@@ -112,6 +125,9 @@ function gameLoop(loopEvent:Event):void{
 			
 		linkMc.gotoAndStop("WalkFrontFrame");
 	}
+	
+	// Kope's Brain
+	
 }
 
 
