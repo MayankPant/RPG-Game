@@ -6,7 +6,7 @@ import flash.display.Stage;
 
 
 linkMc.gotoAndStop("StandFrontFrame"); //goes to the given frame in the timeline of the instance and stops there
-
+kopeMc.gotoAndStop("kopeStandFront");
 // variables for link
 var rightPressed:Boolean = false; // controls the right arrow press key
 var leftPressed:Boolean = false; // controls the right arrow press key
@@ -16,8 +16,12 @@ var linkSpeed:Number = 6;
 // variables for kope
 
 var kopeTimer:Number = 0;
-var KopeDur:Number = Math.random() * 25; // randomly selects the duration for which kope will move in a direction
+var kopeDur:Number = Math.random() * 25; // randomly selects the duration for which kope will move in a direction
 var kopeFacing:Number = Math.floor(Math.random() * 4); // randomly selects a direction to walk in
+var kopeDirection:Array = ["kopeStandRight", "kopeStandLeft", "kopeStandFront", "kopeStandBack"]; // maps kopeFacing to direction
+var kopeWalk:Array = ["kopeWalkRight", "kopeWalkLeft", "kopeWalkFront", "kopeWalkBack"]; // maps kopeFacing to direction
+var kopeX:Array = [1,-1, 0, 0]; // used to set the x direction based on facing direction
+var kopeY: Array = [0, 0, 1, -1]; // used to set the y direction based on facing direction
 var kopeSpeed:Number = 3;
 
 
@@ -127,6 +131,29 @@ function gameLoop(loopEvent:Event):void{
 	}
 	
 	// Kope's Brain
+	
+	if(kopeTimer < kopeDur){
+		
+		kopeTimer++;
+		kopeMc.gotoAndStop(kopeWalk[kopeFacing]);
+		kopeMc.x += kopeX[kopeFacing] * kopeSpeed;
+		kopeMc.y += kopeY[kopeFacing] * kopeSpeed;
+		
+	}
+	else{
+		
+		kopeMc.gotoAndStop(kopeDirection[kopeFacing]);
+		kopeTimer = 0;
+		kopeDur = 10 + Math.random() * 25; // added a 10 for a larger number
+		// this loops check for the possibility of getting the same direction again and
+		// if it does get it again, it generates a new direction
+		while(kopeMc.currentLabel == kopeDirection[kopeFacing]){
+			kopeFacing = Math.floor(Math.random() * 4);
+			
+		}
+		trace(kopeDirection[kopeFacing]);
+		
+	}
 	
 }
 
