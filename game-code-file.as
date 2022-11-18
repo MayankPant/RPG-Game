@@ -6,7 +6,7 @@ import flash.display.Stage;
 
 
 linkMc.gotoAndStop("StandFrontFrame"); //goes to the given frame in the timeline of the instance and stops there
-overworldMc.kopeMc.gotoAndStop("kopeStandFront");
+overworldMc.kopeMc.gotoAndStop("kopeStandFront"); // kobe is the part of background
 // variables for link
 var rightPressed:Boolean = false; // controls the right arrow press key
 var leftPressed:Boolean = false; // controls the right arrow press key
@@ -106,7 +106,7 @@ function gameLoop(loopEvent:Event):void{
 	}
 	else if(upPressed){
 		
-		if(linkMc.y > 200)
+		if(linkMc.y > 350)
 			linkMc.y -= linkSpeed;
 		else
 		{
