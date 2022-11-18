@@ -174,8 +174,9 @@ function gameLoop(loopEvent:Event):void
 		myText.text = "Hello Link! My name is kope. You must traverse this land to defeat the evil one.";
 		overworldMc.kopeMc.gotoAndStop(kopeDirection[kopeFacing]);
 		// stops kope when link is talking to him;
-	};
-}
+	}
+
+
 else
 {
 
