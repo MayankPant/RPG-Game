@@ -130,28 +130,40 @@ function gameLoop(loopEvent:Event):void{
 		linkMc.gotoAndStop("WalkFrontFrame");
 	}
 	
-	// Kope's Brain
+	// what happens if kope touches link
 	
-	if(kopeTimer < kopeDur){
+	if(linkMc.hitTestObject(overworldMc.kopeMc)){ // tests the two characters if they have collided or not
+	   
+	   
+	   myText.text = "Hello Link! My name is kope. You must traverse this land to defeat the evil one."
+	   overworldMc.kopeMc.gotoAndStop(kopeDirection[kopeFacing]); // stops kope when link is talking to him
+	   }
+	   else{
+		   
+		   myText.text = "Find your friend"
+		   // Kope's Brain
+		   if(kopeTimer < kopeDur){
 		
-		kopeTimer++;
-		overworldMc.kopeMc.gotoAndStop(kopeWalk[kopeFacing]);
-		overworldMc.kopeMc.x += kopeX[kopeFacing] * kopeSpeed;
-		overworldMc.kopeMc.y += kopeY[kopeFacing] * kopeSpeed;
+			kopeTimer++;
+			overworldMc.kopeMc.gotoAndStop(kopeWalk[kopeFacing]);
+			overworldMc.kopeMc.x += kopeX[kopeFacing] * kopeSpeed;
+			overworldMc.kopeMc.y += kopeY[kopeFacing] * kopeSpeed;
 		
-	}
-	else{
-		
-		overworldMc.kopeMc.gotoAndStop(kopeDirection[kopeFacing]);
-		kopeTimer = 0;
-		kopeDur = 10 + Math.random() * 25; // added a 10 for a larger number
-		// this loops check for the possibility of getting the same direction again and
-		// if it does get it again, it generates a new direction
-		while(overworldMc.kopeMc.currentLabel == kopeDirection[kopeFacing]){
-			kopeFacing = Math.floor(Math.random() * 4);
+			}
+		else{
+			
+			overworldMc.kopeMc.gotoAndStop(kopeDirection[kopeFacing]);
+			kopeTimer = 0;
+			kopeDur = 10 + Math.random() * 25; // added a 10 for a larger number
+			// this loops check for the possibility of getting the same direction again and
+			// if it does get it again, it generates a new direction
+			while(overworldMc.kopeMc.currentLabel == kopeDirection[kopeFacing]){
+				kopeFacing = Math.floor(Math.random() * 4);
+				
+			}
 			
 		}
-		
+	
 	}
 	
 }
