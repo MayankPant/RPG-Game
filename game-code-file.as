@@ -6,7 +6,7 @@ import flash.display.Stage;
 
 
 linkMc.gotoAndStop("StandFrontFrame"); //goes to the given frame in the timeline of the instance and stops there
-kopeMc.gotoAndStop("kopeStandFront");
+overworldMc.kopeMc.gotoAndStop("kopeStandFront");
 // variables for link
 var rightPressed:Boolean = false; // controls the right arrow press key
 var leftPressed:Boolean = false; // controls the right arrow press key
@@ -135,23 +135,22 @@ function gameLoop(loopEvent:Event):void{
 	if(kopeTimer < kopeDur){
 		
 		kopeTimer++;
-		kopeMc.gotoAndStop(kopeWalk[kopeFacing]);
-		kopeMc.x += kopeX[kopeFacing] * kopeSpeed;
-		kopeMc.y += kopeY[kopeFacing] * kopeSpeed;
+		overworldMc.kopeMc.gotoAndStop(kopeWalk[kopeFacing]);
+		overworldMc.kopeMc.x += kopeX[kopeFacing] * kopeSpeed;
+		overworldMc.kopeMc.y += kopeY[kopeFacing] * kopeSpeed;
 		
 	}
 	else{
 		
-		kopeMc.gotoAndStop(kopeDirection[kopeFacing]);
+		overworldMc.kopeMc.gotoAndStop(kopeDirection[kopeFacing]);
 		kopeTimer = 0;
 		kopeDur = 10 + Math.random() * 25; // added a 10 for a larger number
 		// this loops check for the possibility of getting the same direction again and
 		// if it does get it again, it generates a new direction
-		while(kopeMc.currentLabel == kopeDirection[kopeFacing]){
+		while(overworldMc.kopeMc.currentLabel == kopeDirection[kopeFacing]){
 			kopeFacing = Math.floor(Math.random() * 4);
 			
 		}
-		trace(kopeDirection[kopeFacing]);
 		
 	}
 	

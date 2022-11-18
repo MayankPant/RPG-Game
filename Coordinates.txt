@@ -1,3 +1,6 @@
 Coordinates for the extreme edges of map.
 x = -4310
 y = -2232
+
+Kope or any NPC in general is inside the background layer where the movement of link
+will not affect it.
