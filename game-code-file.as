@@ -27,8 +27,15 @@ var kopeY:Array = [0,0,1,-1];// used to set the y direction based on facing dire
 var kopeSpeed:Number = 3;
 
 
-
-
+// varibales for moblin
+var moblinTimer:Number = 0;
+var moblinDur:Number = Math.random() * 45;// randomly selects the duration for which kope will move in a direction
+var moblinFacing:Number = Math.floor(Math.random() * 4);// randomly selects a direction to walk in
+var moblinDirection:Array = ["moblinStandRight","moblinStandLeft","moblinStandFront","moblinStandBack"];// maps kopeFacing to direction
+var moblinWalk:Array = ["moblinWalkRight","moblinWalkLeft","moblinWalkFront","moblinWalkBack"];// maps kopeFacing to direction
+var moblinX:Array = [1,-1,0,0];// used to set the x direction based on facing direction
+var moblinY:Array = [0,0,1,-1];// used to set the y direction based on facing direction
+var moblinSpeed:Number = 5; // moblin is a bit faster than kope
 
 
 // creating an event listener for pressing keys
@@ -181,7 +188,8 @@ else
 {
 
 	myText.text = "Find your friend";
-	// Kope's Brain
+//-------------------------------------------------------	
+//-----------------Kope's Brain------------------------------
 	if (kopeTimer < kopeDur)
 	{
 
@@ -207,6 +215,26 @@ else
 
 	}
 
+}
+//-------------------------------------
+//------------------// moblin's brains
+if(moblinTimer < moblinDur)
+{
+	moblinTimer++;
+	overworldMc.moblinMc.gotoAndStop(moblinWalk[moblinFacing]);
+	overworldMc.moblinMc.x += moblinX[moblinFacing] * moblinSpeed;
+	overworldMc.moblinMc.y += moblinY[moblinFacing] * moblinSpeed;
+}
+else
+{
+	overworldMc.moblinMc.gotoAndStop(moblinDirection[moblinFacing]);
+	moblinTimer = 0;
+	moblinDur = 10 + Math.random() * 25;
+	
+	while(overworldMc.moblinMc.currentLabel == moblinDirection[moblinFacing])
+	{
+		moblinFacing = Math.floor(Math.random() * 4);
+	}
 }
 
 }
