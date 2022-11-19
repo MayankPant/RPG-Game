@@ -49,19 +49,19 @@ stage.addEventListener(Event.ENTER_FRAME, gameLoop);
 function keyDownHandler(keyEvent:KeyboardEvent):void
 {
 
-	if (keyEvent.keyCode == Keyboard.RIGHT)
+	if (keyEvent.keyCode == Keyboard.D)
 	{
 		rightPressed = true;
 	}
-	else if (keyEvent.keyCode == Keyboard.LEFT)
+	else if (keyEvent.keyCode == Keyboard.A)
 	{
 		leftPressed = true;
 	}
-	else if (keyEvent.keyCode == Keyboard.DOWN)
+	else if (keyEvent.keyCode == Keyboard.S)
 	{
 		downPressed = true;
 	}
-	else if (keyEvent.keyCode == Keyboard.UP)
+	else if (keyEvent.keyCode == Keyboard.W)
 	{
 		upPressed = true;
 	}
@@ -71,22 +71,22 @@ function keyDownHandler(keyEvent:KeyboardEvent):void
 function keyUpHandler(keyEvent:KeyboardEvent):void
 {
 
-	if (keyEvent.keyCode == Keyboard.RIGHT)
+	if (keyEvent.keyCode == Keyboard.D)
 	{
 		rightPressed = false;
 		linkMc.gotoAndStop("StandRightFrame");
 	}
-	else if (keyEvent.keyCode == Keyboard.LEFT)
+	else if (keyEvent.keyCode == Keyboard.A)
 	{
 		leftPressed = false;
 		linkMc.gotoAndStop("StandLeftFrame");
 	}
-	else if (keyEvent.keyCode == Keyboard.UP)
+	else if (keyEvent.keyCode == Keyboard.W)
 	{
 		upPressed = false;
 		linkMc.gotoAndStop("StandBackFrame");
 	}
-	else if (keyEvent.keyCode == Keyboard.DOWN)
+	else if (keyEvent.keyCode == Keyboard.S)
 	{
 		downPressed = false;
 		linkMc.gotoAndStop("StandFrontFrame");
