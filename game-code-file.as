@@ -239,8 +239,8 @@ else
 
 // health bar related things for link
 
-
-	if(linkMc.hitTestObject(overworldMc.moblinMc) && linkHealthBarMc.scaleX > 0.008) // measured using trial.
+// created a hitbox for link which will be used to read hits
+	if(linkMc.linkHitbox.hitTestObject(overworldMc.moblinMc) && linkHealthBarMc.scaleX > 0.008) // measured using trial.
 	   {
 		   linkHealthBarMc.scaleX -= moblinDamage;
 	   }
