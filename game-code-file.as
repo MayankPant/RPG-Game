@@ -36,7 +36,7 @@ var moblinWalk:Array = ["moblinWalkRight","moblinWalkLeft","moblinWalkFront","mo
 var moblinX:Array = [1,-1,0,0];// used to set the x direction based on facing direction
 var moblinY:Array = [0,0,1,-1];// used to set the y direction based on facing direction
 var moblinSpeed:Number = 5; // moblin is a bit faster than kope
-
+var moblinDamage:Number = 0.01; // this is the damage dealth by moblin
 
 // creating an event listener for pressing keys
 stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);
@@ -218,23 +218,39 @@ else
 }
 //-------------------------------------
 //------------------// moblin's brains
-if(moblinTimer < moblinDur)
-{
-	moblinTimer++;
-	overworldMc.moblinMc.gotoAndStop(moblinWalk[moblinFacing]);
-	overworldMc.moblinMc.x += moblinX[moblinFacing] * moblinSpeed;
-	overworldMc.moblinMc.y += moblinY[moblinFacing] * moblinSpeed;
-}
-else
-{
-	overworldMc.moblinMc.gotoAndStop(moblinDirection[moblinFacing]);
-	moblinTimer = 0;
-	moblinDur = 10 + Math.random() * 25;
-	
-	while(overworldMc.moblinMc.currentLabel == moblinDirection[moblinFacing])
+	if(moblinTimer < moblinDur)
 	{
-		moblinFacing = Math.floor(Math.random() * 4);
+		moblinTimer++;
+		overworldMc.moblinMc.gotoAndStop(moblinWalk[moblinFacing]);
+		overworldMc.moblinMc.x += moblinX[moblinFacing] * moblinSpeed;
+		overworldMc.moblinMc.y += moblinY[moblinFacing] * moblinSpeed;
 	}
-}
+	else
+	{
+		overworldMc.moblinMc.gotoAndStop(moblinDirection[moblinFacing]);
+		moblinTimer = 0;
+		moblinDur = 10 + Math.random() * 25;
+		
+		while(overworldMc.moblinMc.currentLabel == moblinDirection[moblinFacing])
+		{
+			moblinFacing = Math.floor(Math.random() * 4);
+		}
+	}
+
+// health bar related things for link
+
+
+	if(linkMc.hitTestObject(overworldMc.moblinMc) && linkHealthBarMc.scaleX > 0.008) // measured using trial.
+	   {
+		   linkHealthBarMc.scaleX -= moblinDamage;
+	   }
+	
+	
+	
+	
+	
+	
+
+	
 
 }
